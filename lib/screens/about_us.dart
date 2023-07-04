@@ -1,8 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:gp_project/shared/shared_widgets.dart';
 
-class AboutUsScreen extends StatelessWidget {
+class AboutUsScreen extends StatefulWidget {
   const AboutUsScreen({Key? key}) : super(key: key);
+
+  @override
+  State<AboutUsScreen> createState() => _AboutUsScreenState();
+}
+
+class _AboutUsScreenState extends State<AboutUsScreen> {
+  final List<String> teamMembers = [
+    "محمد مسعد عامر",
+    "محمد خالد",
+    "محمد عبدالحليم",
+    "مايكل مجدي",
+    "بيتر سامي",
+    "سيف الدين مصطفى",
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    teamMembers.shuffle();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +40,8 @@ class AboutUsScreen extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding:
+              const EdgeInsets.only(right: 20, left: 20, top: 20, bottom: 10),
           child: ListView(
             physics: const BouncingScrollPhysics(),
             children: [
@@ -29,8 +50,8 @@ class AboutUsScreen extends StatelessWidget {
                 height: 200,
               ),
               const SizedBox(height: 20),
-              Text(
-                " أسمعني هو تطبيق عناسمعني هو تطبيق عناسمعني هو تطبيق عناسمعني هو تطبيق عناسمعني هو تطبيق عناسمعني هو تطبيق عناسمعني هو تطبيق عن اسمعني هو تطبيق عناسمعني هو تطبيق عناسمعني هو تطبيق عناسمعني هو تطبيق عن ",
+              const Text(
+                "أسمعني هو تطبيق يهدف لترجمة لغة الصم و البكم المصرية لتسهيل التواصل بين الصم و البكم و بقية أفراد المجتمع مما يساعد فى زيادة اختلاط الصم و البكم بالمجتمع مستفيدين من قدراتمه و امكانياتهم ",
                 style: TextStyle(color: Colors.white),
                 maxLines: 6,
               ),
@@ -38,7 +59,7 @@ class AboutUsScreen extends StatelessWidget {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
+                    children: const [
                       Text(
                         "فريق أسمعنى",
                         style: TextStyle(fontSize: 24, color: Colors.white),
@@ -47,18 +68,28 @@ class AboutUsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [memberName(), memberName()],
+                        children: [
+                          memberName(memberName: teamMembers[0]),
+                          memberName(memberName: teamMembers[1])
+                        ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [memberName(), memberName()],
+                        children: [
+                          memberName(memberName: teamMembers[2]),
+                          memberName(memberName: teamMembers[3])
+                        ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [memberName(), memberName()],
+                        children: [
+                          memberName(memberName: teamMembers[4]),
+                          memberName(memberName: teamMembers[5]),
+                        ],
                       ),
                     ],
                   )

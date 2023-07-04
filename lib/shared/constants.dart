@@ -12,8 +12,8 @@ import 'package:flutter/material.dart';
 BoxDecoration backgroundDecoration = const BoxDecoration(
   gradient: LinearGradient(
     colors: [
-      Color(0xFF0E092A),
-      Color(0xFF261D5C),
+      Color(0xFF000013),
+      // Color(0xFF261D5C),
       Color(0xFF0E092A),
     ],
     begin: Alignment.centerLeft,

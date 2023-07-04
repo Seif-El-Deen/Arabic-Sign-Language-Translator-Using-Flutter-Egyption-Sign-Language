@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gp_project/provider/provider.dart';
 import 'package:gp_project/screens/about_us.dart';
 import 'package:gp_project/screens/home/learning_home_screen.dart';
-import 'package:gp_project/screens/home/online_translation_screen.dart';
-import 'package:gp_project/screens/home/translating_home_screen.dart';
+import 'package:gp_project/screens/home/translation_screen.dart';
 import 'package:gp_project/screens/learning/numbers_learning_screen.dart';
 import 'package:gp_project/screens/learning/sentences_learning_screen.dart';
 import 'package:gp_project/screens/learning/words_learning_screen.dart';
@@ -11,29 +10,28 @@ import 'package:gp_project/screens/learning/letters_learning_screen.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
-  int _currentIndex = 0;
-  late PageController _pageController = PageController();
+  const HomeScreen({super.key});
 
   Widget returnBody() {
     switch (MyProvider.pageNumber) {
       case 0:
-        return LearningHomeScreen();
+        return const LearningHomeScreen();
       case 1:
-        return TranslatingHomeScreen();
+        return const TranslationScreen();
       case 2:
-        return AboutUsScreen();
+        return const AboutUsScreen();
       case 3:
-        return NumbersLearningScreen();
+        return const NumbersLearningScreen();
       case 4:
-        return LettersLearningScreen();
+        return const LettersLearningScreen();
       case 5:
-        return WordsLearningScreen();
+        return const WordsLearningScreen();
       case 6:
-        return SentencesLearningScreen();
-      case 7:
-        return OnlineTranslationScreen();
+        return const SentencesLearningScreen();
+      // case 7:
+      //   return TranslationScreen();
     }
-    return LearningHomeScreen();
+    return const LearningHomeScreen();
   }
 
   @override
@@ -66,9 +64,15 @@ class HomeScreen extends StatelessWidget {
                             Provider.of<MyProvider>(context, listen: false);
                         p.changePageNumber(pageNum: 0);
                       },
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.menu_book_outlined,
-                        color: Colors.white,
+                        color: MyProvider.pageNumber == 0 ||
+                                MyProvider.pageNumber == 3 ||
+                                MyProvider.pageNumber == 4 ||
+                                MyProvider.pageNumber == 5 ||
+                                MyProvider.pageNumber == 6
+                            ? Colors.purpleAccent
+                            : Colors.white,
                         size: 36,
                       )),
                   IconButton(
@@ -77,9 +81,11 @@ class HomeScreen extends StatelessWidget {
                             Provider.of<MyProvider>(context, listen: false);
                         p.changePageNumber(pageNum: 1);
                       },
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.video_call,
-                        color: Colors.white,
+                        color: MyProvider.pageNumber == 1
+                            ? Colors.purpleAccent
+                            : Colors.white,
                         size: 36,
                       )),
                   IconButton(
@@ -88,9 +94,11 @@ class HomeScreen extends StatelessWidget {
                             Provider.of<MyProvider>(context, listen: false);
                         p.changePageNumber(pageNum: 2);
                       },
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.info_outline,
-                        color: Colors.white,
+                        color: MyProvider.pageNumber == 2
+                            ? Colors.purpleAccent
+                            : Colors.white,
                         size: 36,
                       )),
                 ],

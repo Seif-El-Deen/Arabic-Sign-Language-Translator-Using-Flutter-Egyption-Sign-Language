@@ -63,7 +63,7 @@ class _WordsLearningScreenState extends State<WordsLearningScreen> {
                     aspectRatio: 0.9,
                     viewportFraction: 1,
                     onPageChanged: (index, _) {
-                      print(index);
+                      // print(index);
                       selectedWordIndex = index;
                       setState(() {});
                     },
@@ -111,6 +111,7 @@ class _WordsLearningScreenState extends State<WordsLearningScreen> {
                       if (selectedWordIndex == 0) {
                         selectedWordIndex = words.length - 1;
                       }
+                      _carouselController.jumpToPage(selectedWordIndex);
                       setState(() {});
                     },
                     child: Stack(
@@ -145,6 +146,8 @@ class _WordsLearningScreenState extends State<WordsLearningScreen> {
                       if (selectedWordIndex == words.length) {
                         selectedWordIndex = 0;
                       }
+                      _carouselController.jumpToPage(selectedWordIndex);
+
                       setState(() {});
                     },
                     child: Stack(

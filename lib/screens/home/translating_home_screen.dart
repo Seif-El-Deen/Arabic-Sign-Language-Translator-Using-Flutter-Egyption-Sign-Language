@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gp_project/provider/provider.dart';
+import 'package:gp_project/shared/constants.dart';
 import 'package:gp_project/shared/shared_widgets.dart';
 import 'package:provider/provider.dart';
 
@@ -11,39 +12,30 @@ class TranslatingHomeScreen extends StatelessWidget {
     return Consumer<MyProvider>(builder: (context, myModel, child) {
       return SafeArea(
         child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color(0xFF0E092A),
-                Color(0xFF261D5C),
-                Color(0xFF0E092A),
-              ],
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-            ),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+          decoration: backgroundDecoration,
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
           width: double.infinity,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Expanded(
-                  child: Image.asset(
+              Image.asset(
                 "assets/images/app_logo.png",
                 height: 200,
                 width: 250,
-              )),
+              ),
+
               const SizedBox(height: 50),
               homeButton(
-                  text: "الاتصال عبر الانترنت",
+                  text: "ترجمة فيديو على الهاتف",
+                  icon: Icons.upload,
                   onTap: () {
                     final p = Provider.of<MyProvider>(context, listen: false);
                     p.changePageNumber(pageNum: 7);
                   }),
               const SizedBox(height: 30),
-              homeButton(text: "الاتصال بدون الانترنت"),
-              const Spacer(),
+              homeButton(text: "التقاط فيديو", icon: Icons.videocam_outlined),
+              // const Spacer(),
             ],
           ),
         ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gp_project/screens/home/camera_try.dart';
 import 'package:gp_project/screens/home/home.dart';
-import 'package:gp_project/screens/learning/letters_learning_screen.dart';
-import 'package:gp_project/screens/tab_bar_view_screen.dart';
+import 'package:gp_project/services/api-handler.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await ApiHandler.getNgrokLink();
   runApp(const MyApp());
 }
 
@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
         fontFamily: "Cairo",
       ),
       // home: VideoCaptureScreen(),
-      home: HomeScreen(),
+      // home: VideoCaptureExample(),
+      home: const HomeScreen(),
     );
   }
 }

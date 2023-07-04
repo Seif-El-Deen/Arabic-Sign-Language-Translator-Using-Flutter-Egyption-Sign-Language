@@ -86,12 +86,15 @@ class _SentencesLearningScreenState extends State<SentencesLearningScreen> {
                             margin: const EdgeInsets.all(5),
                             padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: Colors.white,
-                                image: DecorationImage(
-                                    fit: BoxFit.fitHeight,
-                                    image: AssetImage(
-                                        "assets/gifs/${sentences[selectedSentenceIndex]}.gif"))),
+                              borderRadius: BorderRadius.circular(25),
+                              color: Colors.white,
+                              image: DecorationImage(
+                                fit: BoxFit.fitHeight,
+                                image: AssetImage(
+                                  "assets/gifs/${sentences[selectedSentenceIndex]}.gif",
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       )
@@ -111,6 +114,8 @@ class _SentencesLearningScreenState extends State<SentencesLearningScreen> {
                       if (selectedSentenceIndex == 0) {
                         selectedSentenceIndex = sentences.length - 1;
                       }
+                      _carouselController.jumpToPage(selectedSentenceIndex);
+
                       setState(() {});
                     },
                     child: Stack(
@@ -145,6 +150,8 @@ class _SentencesLearningScreenState extends State<SentencesLearningScreen> {
                       if (selectedSentenceIndex == sentences.length) {
                         selectedSentenceIndex = 0;
                       }
+                      _carouselController.jumpToPage(selectedSentenceIndex);
+
                       setState(() {});
                     },
                     child: Stack(

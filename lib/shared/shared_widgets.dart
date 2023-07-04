@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gp_project/shared/constants.dart';
 
-Widget memberName() {
+Widget memberName({required String memberName}) {
   return Container(
-    height: 260,
+    height: 230,
     decoration: BoxDecoration(
       gradient: const LinearGradient(
         colors: [
@@ -30,8 +29,8 @@ Widget memberName() {
     child: Column(
       children: [
         Image.asset(
-          "assets/images/أ.png",
-          // height: 170,
+          "assets/images/team_members_images/$memberName.png",
+          height: 170,
           width: 150,
           fit: BoxFit.fitWidth,
         ),
@@ -47,9 +46,9 @@ Widget memberName() {
               end: Alignment.centerLeft,
             ),
           ),
-          child: const Text(
-            "اسم الفريق",
-            style: TextStyle(fontSize: 16, color: Colors.white),
+          child: Text(
+            memberName,
+            style: const TextStyle(fontSize: 16, color: Colors.white),
           ),
         )
       ],
@@ -85,7 +84,8 @@ Widget lettersWidget({required int index, required String letter}) {
     child: Container(
       height: 260,
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(25)),
+          color: const Color(0xff2A2A2A),
+          borderRadius: BorderRadius.circular(25)),
       child: Column(
         children: [
           Container(
@@ -94,7 +94,7 @@ Widget lettersWidget({required int index, required String letter}) {
                 borderRadius: BorderRadius.circular(25),
                 image: DecorationImage(
                     image: AssetImage(
-                      "assets/images/${letter}.png",
+                      "assets/images/$letter.png",
                     ),
                     fit: BoxFit.fitWidth)),
           ),
@@ -107,7 +107,7 @@ Widget lettersWidget({required int index, required String letter}) {
               letter,
               style: const TextStyle(
                   fontSize: 36,
-                  color: Colors.black,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),
           )
@@ -118,27 +118,32 @@ Widget lettersWidget({required int index, required String letter}) {
 }
 
 Widget homeButton(
-    {required String text, String? image, void Function()? onTap}) {
+    {required String text, required IconData icon, void Function()? onTap}) {
   return GestureDetector(
     onTap: onTap,
     child: Container(
       height: 105,
-      width: 320,
+      // width: 320,
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.green, width: 3),
+        border: Border.all(color: Colors.lightGreenAccent, width: 3),
         borderRadius: BorderRadius.circular(25),
-        color: Color(0xff27272F),
+        color: const Color(0xff27272F),
       ),
-      child: Column(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
             text,
             textAlign: TextAlign.center,
             style: const TextStyle(
-                fontSize: 28, fontWeight: FontWeight.w700, color: Colors.white),
+                fontSize: 24, fontWeight: FontWeight.w700, color: Colors.white),
+          ),
+          Icon(
+            icon,
+            size: 50,
+            color: Colors.white,
           ),
         ],
       ),
@@ -180,7 +185,9 @@ Widget learningTopicButton({
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: Colors.black, borderRadius: BorderRadius.circular(25)),
+          color: Colors.black,
+          borderRadius: BorderRadius.circular(25),
+        ),
         child: Text(
           text,
           style: const TextStyle(fontSize: 40, color: Colors.white),

@@ -1,13 +1,11 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:gp_project/models/learning_topic.dart';
 import 'package:gp_project/provider/provider.dart';
 import 'package:gp_project/shared/constants.dart';
 import 'package:gp_project/shared/shared_widgets.dart';
 import 'package:provider/provider.dart';
 
 class LettersLearningScreen extends StatefulWidget {
-  LettersLearningScreen({Key? key}) : super(key: key);
+  const LettersLearningScreen({Key? key}) : super(key: key);
 
   @override
   State<LettersLearningScreen> createState() => _LettersLearningScreenState();
@@ -67,16 +65,19 @@ class _LettersLearningScreenState extends State<LettersLearningScreen> {
                             size: 30,
                           )),
                       IconButton(
-                          onPressed: () {
-                            setState(() {
+                        onPressed: () {
+                          setState(
+                            () {
                               isGrid = true;
-                            });
-                          },
-                          icon: const Icon(
-                            Icons.grid_view,
-                            color: Colors.purple,
-                            size: 30,
-                          ))
+                            },
+                          );
+                        },
+                        icon: const Icon(
+                          Icons.grid_view,
+                          color: Colors.purple,
+                          size: 30,
+                        ),
+                      )
                     ],
                   ),
                   Row(
@@ -89,11 +90,13 @@ class _LettersLearningScreenState extends State<LettersLearningScreen> {
                       Checkbox(
                         value: isSorted,
                         onChanged: (bool? value) {
-                          setState(() {
-                            isSorted = !isSorted;
-                            usedLetters = usedLetters.reversed.toList();
-                            print(usedLetters);
-                          });
+                          setState(
+                            () {
+                              isSorted = !isSorted;
+                              usedLetters = usedLetters.reversed.toList();
+                              // print(usedLetters);
+                            },
+                          );
                         },
                         fillColor: MaterialStateProperty.resolveWith<Color>(
                             (Set<MaterialState> states) {
@@ -141,7 +144,7 @@ class _LettersLearningScreenState extends State<LettersLearningScreen> {
                                 bottomRight: Radius.circular(25.0),
                               ),
                               border: Border.all(
-                                width: 2.0,
+                                width: 1.5,
                                 style: BorderStyle.solid,
                                 color: Colors.transparent,
                               ),
@@ -154,7 +157,7 @@ class _LettersLearningScreenState extends State<LettersLearningScreen> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
                               decoration: const BoxDecoration(
-                                color: Colors.white,
+                                color: Color(0xff2A2A2A),
                                 borderRadius: BorderRadius.only(
                                   topRight: Radius.circular(25.0),
                                   bottomRight: Radius.circular(25.0),
@@ -171,13 +174,13 @@ class _LettersLearningScreenState extends State<LettersLearningScreen> {
                                   const SizedBox(height: 10),
                                   Container(
                                     alignment: Alignment.center,
-                                    // padding: const EdgeInsets.only(right: 4),
+                                    padding: const EdgeInsets.only(right: 10),
                                     decoration: const BoxDecoration(),
                                     child: Text(
                                       usedLetters[index],
                                       style: const TextStyle(
                                           fontSize: 36,
-                                          color: Colors.black,
+                                          color: Colors.white,
                                           fontWeight: FontWeight.bold),
                                     ),
                                   )
